@@ -27,23 +27,23 @@ function CheckoutPage() {
         // More products...
     ]
 
-    const address = [
+    const addresses = [
         {
             name: 'kamal jha',
             street: 'Model town, Panipat',
             pincode: '132103',
             contactNo: '124536478',
             state: 'Haryana',
-            email:'userkamaljha@gmail.com'
+            email: 'userkamaljha@gmail.com'
 
         },
         {
             name: 'Ankit sharma',
-            street: 'Nfl township, Panipat',
+            street: 'NFL Township, Panipat',
             pincode: '132103',
             contactNo: '124536478',
             state: 'Haryana',
-            email:'kamaljha@gmail.com'
+            email: 'kamaljha@gmail.com'
 
 
         }
@@ -54,8 +54,8 @@ function CheckoutPage() {
             <div className="bg-gray-100 rounded-lg md:flex gap-2 my-8 sm:mx-auto mx-8 py-8 mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
                 <form action="">
                     <div className="border-b border-gray-900/10 pb-12">
-                        <h2 className="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
-                        <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
+                        <h2 className="text-lg font-bold leading-6 text-gray-900">Personal Information</h2>
+                        <p className="text-gray-500 mt-2">Use a permanent address where you can receive mail.</p>
 
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-3">
@@ -200,37 +200,41 @@ function CheckoutPage() {
                                 <legend className="text-lg font-bold leading-6 text-gray-900">Delivery Address</legend>
                                 <p className="text-gray-500 mt-2">Choose from Existing address</p>
                                 <div className="mt-6  space-y-4">
-                                    <div className="relative border flex p-2 px-4  gap-x-3">
-                                        <div className="flex h-6 items-center">
-                                            <input
-                                                name="address"
-                                                type="radio"
-                                                className="h-4 w-4 rounded-full border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                            />
-                                        </div>
-                                        <ul>
-                                        {address.map((addr) => {
-                                            <li key={addr.email} className="flex justify-between w-full text-sm leading-6">
-                                                <div>
-                                                    <label htmlFor="address" className="font-semibold text-gray-900">
-                                                        {addr.name}
-                                                    </label>
-                                                    <p className="text-gray-500">{addr.street}</p>
-                                                    <p className="text-gray-500">{addr.pincode}</p>
+                                    <ul>
+                                        {addresses.map((address, index) => (
+                                            <li
+                                                key={index}
+                                                className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 border-gray-200"
+                                            >
+                                                <div className="flex gap-x-4">
+                                                    <input
+                                                        name="address"
+                                                        type="radio"
+                                                        value={index}
+                                                        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                                    />
+                                                    <div className="min-w-0 flex-auto">
+                                                        <p className="text-sm font-semibold leading-6 text-gray-900">
+                                                            {address.name}
+                                                        </p>
+                                                        <p className="mt-1 truncate text-xs leading-5 text-gray-500">
+                                                            {address.street}
+                                                        </p>
+                                                        <p className="mt-1 truncate text-xs leading-5 text-gray-500">
+                                                            {address.pincode}
+                                                        </p>
+                                                    </div>
                                                 </div>
-
-                                                <div>Contact No. {addr.contactNo}
-
-                                                    <p>{addr.state}</p>
+                                                <div className="hidden sm:flex sm:flex-col sm:items-end">
+                                                    <p className="text-sm leading-6 text-gray-900">
+                                                        Phone: {address.contactNo}
+                                                    </p>
+                                                    <p className="text-sm leading-6 text-gray-500">
+                                                        {address.state}
+                                                    </p>
                                                 </div>
-                                            </li>
-                                        })}
-                                        </ul>
-
-
-
-
-                                    </div>
+                                            </li>))}
+                                      </ul>     
                                 </div>
                             </fieldset>
                             <fieldset>
@@ -331,10 +335,10 @@ function CheckoutPage() {
                         <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                         <div className="mt-6">
                             <Link
-                                to="/checkout"
+                                to="/payment"
                                 className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                             >
-                                Checkout
+                                Pay and Order
                             </Link>
                         </div>
                         <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
