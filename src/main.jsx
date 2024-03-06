@@ -8,6 +8,8 @@ import SignupPage from './pages/SignupPage.jsx'
 import CartPage from './pages/CartPage.jsx'
 import CheckoutPage from './pages/CheckoutPage.jsx'
 import ProductDetailsPage from './pages/ProductDetailsPage.jsx'
+import { Provider } from 'react-redux'
+import { store } from './app/store.js'
 
 
 let router = createBrowserRouter([
@@ -38,8 +40,9 @@ let router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
-  
+  <Provider store={store}>
   <React.StrictMode>
    <RouterProvider router={router}></RouterProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Provider>
 )

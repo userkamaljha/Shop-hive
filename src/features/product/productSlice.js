@@ -1,22 +1,38 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchCount } from './productListAPI';
+import { fetchAllProducts, fetchProductsByFilters, fetchProductsBySort } from './productAPI';
 
 const initialState = {
-  value: 0,
+  products: [],
   status: 'idle',
 };
 
-export const incrementAsync = createAsyncThunk(
-  'counter/fetchCount',
-  async (amount) => {
-    const response = await fetchCount(amount);
-    // The value we return becomes the `fulfilled` action payload
+export const fetchAllProductsAsync = createAsyncThunk(
+  'product/fetchAllProducts',
+  async () => {
+    const response = await fetchAllProducts();
     return response.data;
   }
 );
 
-export const counterSlice = createSlice({
-  name: 'counter',
+export const fetchProductsByFilterAsync = createAsyncThunk(
+  'product/fetchProductsByFilters',
+  async (filter) => {
+    const response = await fetchProductsByFilters(filter);
+    return response.data;
+  }
+);
+export const fetchProductsBySortAsync = createAsyncThunk(
+  'product/fetchProductsBySort',
+  async (sort) => {
+    const response = await fetchProductsBySort(sort);
+    return response.data;
+  }
+);
+
+
+
+export const productSlice = createSlice({
+  name: 'product',
   initialState,
   reducers: {
     increment: (state) => {
@@ -25,18 +41,31 @@ export const counterSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(incrementAsync.pending, (state) => {
+      .addCase(fetchAllProductsAsync.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(incrementAsync.fulfilled, (state, action) => {
+      .addCase(fetchAllProductsAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.value += action.payload;
-      });
+        state.products = action.payload;
+      })
+      .addCase(fetchProductsByFilterAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchProductsByFilterAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.products = action.payload;
+      })
+      .addCase(fetchProductsBySortAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchProductsBySortAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.products = action.payload;
+      })
   },
 });
 
-export const { increment } = counterSlice.actions;
 
-export const selectCount = (state) => state.counter.value;
+export const selectAllProducts = (state) => state.product.products;
 
-export default counterSlice.reducer;
+export default productSlice.reducer;

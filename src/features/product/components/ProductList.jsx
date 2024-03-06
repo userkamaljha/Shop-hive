@@ -1,101 +1,72 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAllProductsAsync ,fetchProductsByFilterAsync, fetchProductsBySortAsync, selectAllProducts } from '../productSlice'
 
 
 const sortOptions = [
-  { name: 'Most Popular', href: '#', current: true },
-  { name: 'Best Rating', href: '#', current: false },
-  { name: 'Newest', href: '#', current: false },
-  { name: 'Price: Low to High', href: '#', current: false },
-  { name: 'Price: High to Low', href: '#', current: false },
+  { name: 'Best Rating', sort:'-rating', current: false },
+  { name: 'Price: Low to High', sort: 'price', current: false },
+  { name: 'Price: High to Low', sort: '-price', current: false },
 ]
 const filters = [
-  {
-    id: 'color',
-    name: 'Color',
-    options: [
-      { value: 'white', label: 'White', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
-      { value: 'blue', label: 'Blue', checked: true },
-      { value: 'brown', label: 'Brown', checked: false },
-      { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false },
-    ],
-  },
   {
     id: 'category',
     name: 'Category',
     options: [
-      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-      { value: 'sale', label: 'Sale', checked: false },
-      { value: 'travel', label: 'Travel', checked: true },
-      { value: 'organization', label: 'Organization', checked: false },
-      { value: 'accessories', label: 'Accessories', checked: false },
+      { value: 'smartphones', label: 'smart phones', checked: false },
+      { value: 'laptops', label: 'laptops', checked: false },
+      { value: 'fragrances', label: 'fragrances', checked: false },
+      { value: 'skincare', label: 'skincare', checked: false },
+      { value: 'home-decoration', label: 'home decoration', checked: false },
+      { value: 'groceries', label: 'groceries', checked: false },
     ],
   },
   {
-    id: 'size',
-    name: 'Size',
+    id: 'brand',
+    name: 'Brands',
     options: [
-      { value: '2l', label: '2L', checked: false },
-      { value: '6l', label: '6L', checked: false },
-      { value: '12l', label: '12L', checked: false },
-      { value: '18l', label: '18L', checked: false },
-      { value: '20l', label: '20L', checked: false },
-      { value: '40l', label: '40L', checked: true },
-    ],
-  },
+      { value: 'Apple', label: 'Apple', checked: false },
+      { value: 'OPPO', label: 'OPPO', checked: false },
+      { value: 'Samsung', label: 'Samsung', checked: false },
+      { value: 'Huawei', label: 'Huawei', checked: false },
+      { value: 'HP Pavilion', label: 'HP Pavilion', checked: false },
+    ]
+  }
+ 
+  
 ]
 
-const products = [
-  {
-    id: 1,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
-  {
-    id: 2,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
-  {
-    id: 3,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
-  {
-    id: 4,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
-  // More products...
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
+
 function ProductList() {
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+ const products = useSelector(selectAllProducts)
+ const dispatch = useDispatch()
+ const [filter, setFilter] = useState({})
+
+ const handleFilter = (e,section, option)=>{
+  const newFilter = {...filter, [section.id]: option.value }
+     setFilter(newFilter)
+  dispatch(fetchProductsByFilterAsync(newFilter))
+ }
+ const handleSort = (e,option)=>{
+  const newFilter = {...filter ,_sort: option.sort }
+     setFilter(newFilter)
+  dispatch(fetchProductsBySortAsync(newFilter))
+ }
+
+ useEffect(()=>{
+ dispatch(fetchAllProductsAsync())
+ },[dispatch])
+
 
   return (
     <div className="bg-white  mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -167,7 +138,8 @@ function ProductList() {
                                       name={`${section.id}[]`}
                                       defaultValue={option.value}
                                       type="checkbox"
-                                      defaultChecked={option.checked}
+                                      onChange={e=> console.log(e.target.value)}
+                                      defaultChecked={option.check}
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                     />
                                     <label
@@ -221,8 +193,8 @@ function ProductList() {
                       {sortOptions.map((option) => (
                         <Menu.Item key={option.name}>
                           {({ active }) => (
-                            <a
-                              href={option.href}
+                            <p
+                              onClick={(e)=> handleSort(e, option)}
                               className={classNames(
                                 option.current ? 'font-medium text-gray-900' : 'text-gray-500',
                                 active ? 'bg-gray-100' : '',
@@ -230,7 +202,7 @@ function ProductList() {
                               )}
                             >
                               {option.name}
-                            </a>
+                            </p>
                           )}
                         </Menu.Item>
                       ))}
@@ -286,6 +258,7 @@ function ProductList() {
                                   name={`${section.id}[]`}
                                   defaultValue={option.value}
                                   type="checkbox"
+                                  onChange={(e)=> handleFilter(e, section, option)}
                                   defaultChecked={option.checked}
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
@@ -306,8 +279,7 @@ function ProductList() {
               </form>
 
               {/* Product grid */}
-              <div className="lg:col-span-3">
-
+             {products.length !== 0 ? (<div className="lg:col-span-3">
                 <div>
                   <div className="bg-white ">
                     <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
@@ -317,8 +289,8 @@ function ProductList() {
                           <div key={product.id} className="group relative">
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                               <img
-                                src={product.imageSrc}
-                                alt={product.imageAlt}
+                                src={product.thumbnail}
+                                alt={product.title}
                                 className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                               />
                             </div>
@@ -327,20 +299,23 @@ function ProductList() {
                                 <h3 className="text-sm text-gray-700">
                                   <Link to='/product-details'>
                                     <span aria-hidden="true" className="absolute inset-0" />
-                                    {product.name}
+                                    {product.title}
                                   </Link>
                                 </h3>
-                                <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                                <p className="mt-1 text-sm text-gray-500"><span className='text-gray-800 mr-3'>Rating</span> {product.rating}</p>
                               </div>
-                              <p className="text-sm font-medium text-gray-900">{product.price}</p>
+                              <div>
+                              <p className="text-sm font-medium text-gray-900">$ {Math.round(product.price * (1- product.discountPercentage / 100))}</p>
+                              <p className="text-sm  font-medium line-through text-gray-400">{product.price}</p>
+                              </div>
                             </div>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
-                </div></div>
-            </div>
+                </div></div>): <h1>no product found!!</h1>}
+              </div>  
           </section>
         </main>
       </div>
