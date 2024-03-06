@@ -13,11 +13,10 @@ export const fetchAllProductsAsync = createAsyncThunk(
     return response.data;
   }
 );
-
 export const fetchProductsByFilterAsync = createAsyncThunk(
   'product/fetchProductsByFilters',
-  async (filter) => {
-    const response = await fetchProductsByFilters(filter);
+  async ({filter, pagination}) => {
+    const response = await fetchProductsByFilters(filter, pagination);
     return response.data;
   }
 );
@@ -34,6 +33,7 @@ export const fetchProductsBySortAsync = createAsyncThunk(
 export const productSlice = createSlice({
   name: 'product',
   initialState,
+
   reducers: {
     increment: (state) => {
       state.value += 1;
@@ -53,7 +53,7 @@ export const productSlice = createSlice({
       })
       .addCase(fetchProductsByFilterAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.products = action.payload;
+        state.products = action.payload.products;
       })
       .addCase(fetchProductsBySortAsync.pending, (state) => {
         state.status = 'loading';
