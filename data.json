@@ -552,5 +552,65 @@
                 "https://cdn.dummyjson.com/product-images/30/thumbnail.jpg"
             ]
         }
+    ],
+    "categories": [
+        {
+            "value": "smartphones",
+            "label": "smart phones",
+            "checked": false
+        },
+        {
+            "value": "laptops",
+            "label": "laptops",
+            "checked": false
+        },
+        {
+            "value": "fragrances",
+            "label": "fragrances",
+            "checked": false
+        },
+        {
+            "value": "skincare",
+            "label": "skincare",
+            "checked": false
+        },
+        {
+            "value": "home-decoration",
+            "label": "home decoration",
+            "checked": false
+        },
+        {
+            "value": "groceries",
+            "label": "groceries",
+            "checked": false
+        }
+    ],
+    
+    "brands": [
+        {
+            "value": "Apple",
+            "label": "Apple",
+            "checked": false
+        },
+        {
+            "value": "OPPO",
+            "label": "OPPO",
+            "checked": false
+        },
+        {
+            "value": "Samsung",
+            "label": "Samsung",
+            "checked": false
+        },
+        {
+            "value": "Huawei",
+            "label": "Huawei",
+            "checked": false
+        },
+        {
+            "value": "HP Pavilion",
+            "label": "HP Pavilion",
+            "checked": false
+        }
     ]
 }

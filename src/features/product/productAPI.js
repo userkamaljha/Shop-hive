@@ -7,7 +7,15 @@ export function fetchAllProducts() {
     }
     );
   }
-export function fetchProductsByFilters(filter, pagination) {
+export function fetchProductById(id) {
+    return new Promise(async (resolve) =>{
+      const response = await fetch('http:/localhost:3000/products/'+ id) 
+      const data = await response.json()
+      resolve({data})
+    }
+    );
+  }
+export function fetchProductsByFilters(filter, pagination, sort) {
   // filter: {"category": "smartphone"}
   // pagination :{_page:1, _limit= 10"}
   // todo : we will support multiple filter /sort
@@ -19,10 +27,13 @@ export function fetchProductsByFilters(filter, pagination) {
       queryString += `${key}=${lastCategoryValue}&`
     }
   }
-console.log(pagination);
+
   for(let key in pagination){
     queryString += `${key}=${pagination[key]}&`
-    console.log(pagination[key]);
+  }
+
+  for(let key in sort){
+    queryString += `${key}=${sort[key]}&`
   }
   
     return new Promise(async (resolve) =>{
@@ -34,16 +45,18 @@ console.log(pagination);
     }
     );
   }
-export function fetchProductsBySort(sort) {
-  // sort: {"sort": "high to low"}
-  // todo : we will support multiple filter /sort
-  let queryString = '';
-  for(let key in sort){
-    queryString += `${key}=${sort[key]}&`
-  }
+
+ export function fetchCategories() {
     return new Promise(async (resolve) =>{
-      // todo: change it later
-      const response = await fetch('http://localhost:3000/products/?'+ queryString) 
+      const response = await fetch('http://localhost:3000/categories') 
+      const data = await response.json()
+      resolve({data})
+    }
+    );
+  }
+  export function fetchBrands() {
+    return new Promise(async (resolve) =>{
+      const response = await fetch('http://localhost:3000/brands') 
       const data = await response.json()
       resolve({data})
     }

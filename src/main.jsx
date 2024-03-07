@@ -32,7 +32,7 @@ let router = createBrowserRouter([
     element:<CheckoutPage/>
   },
   {
-    path:'/product-details',
+    path:'/product-details/:id',
     element:<ProductDetailsPage/>
   },
 
