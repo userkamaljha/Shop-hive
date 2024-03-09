@@ -10,12 +10,13 @@ import CheckoutPage from './pages/CheckoutPage.jsx'
 import ProductDetailsPage from './pages/ProductDetailsPage.jsx'
 import { Provider } from 'react-redux'
 import { store } from './app/store.js'
+import Protected from './features/auth/components/Protected.jsx'
 
 
 let router = createBrowserRouter([
   {
     path:'/',
-    element: <App/>,
+    element: <App/>
   },
   {path:'/login',
    element:<LoginPage/>
@@ -25,11 +26,11 @@ let router = createBrowserRouter([
   },
   {
     path:'/cart',
-    element:<CartPage/>
+    element: <Protected><CartPage/></Protected>
   },
   {
     path:'/checkout',
-    element:<CheckoutPage/>
+    element: <Protected><CheckoutPage/></Protected>
   },
   {
     path:'/product-details/:id',

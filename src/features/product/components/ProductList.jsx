@@ -41,8 +41,8 @@ function ProductList() {
       name: 'Brands',
       options: brands
     }
-  
-  
+
+
   ]
 
   const handleFilter = (e, section, option) => {
@@ -61,7 +61,7 @@ function ProductList() {
   }
 
   const handleSort = (e, option) => {
-    const sort = {_sort: option.sort }
+    const sort = { _sort: option.sort }
     setSort(sort)
   }
   const handlePage = (page) => {
@@ -79,11 +79,11 @@ function ProductList() {
   }, [dispatch, filter, page, sort])
 
 
-  useEffect(()=>{
+  useEffect(() => {
     setPage(1)
   }, [products.items])
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(fetchCategoriesAsync())
     dispatch(fetchBrandsAsync())
   }, [])
@@ -126,7 +126,7 @@ function ProductList() {
                         <Menu.Item key={option.name}>
                           {({ active }) => (
                             <p
-                              onClick={(e)=> handleSort(e, option)}
+                              onClick={(e) => handleSort(e, option)}
                               className={classNames(
                                 option.current ? 'font-medium text-gray-900' : 'text-gray-500',
                                 active ? 'bg-gray-100' : '',
@@ -162,7 +162,7 @@ function ProductList() {
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
-              <DesktopFilter handleFilter={handleFilter} filters = {filters} />
+              <DesktopFilter handleFilter={handleFilter} filters={filters} />
 
               {/* Product grid */}
               <ProductGrid products={products} />
@@ -175,13 +175,13 @@ function ProductList() {
       <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
         <div className="flex flex-1 justify-between sm:hidden">
           <div
-            onClick={(e)=> handlePage(page > 1  ?  page - 1: page)}
+            onClick={(e) => handlePage(page > 1 ? page - 1 : page)}
             className=" cursor-pointer relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             Previous
           </div>
           <div
-            onClick={(e)=> handlePage(page < products.items ?  page + 1: page)}
+            onClick={(e) => handlePage(page < products.items ? page + 1 : page)}
             className="relative ml-3 cursor-pointer inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             Next
@@ -295,9 +295,9 @@ function ProductGrid({ products }) {
       <div>
         <div className="bg-white ">
           <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
-
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
               {products.data.map((product) => (
+                  <Link to={`/product-details/${product.id}`}>
                 <div key={product.id} className="group relative">
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                     <img
@@ -309,10 +309,10 @@ function ProductGrid({ products }) {
                   <div className="mt-4 flex justify-between">
                     <div>
                       <h3 className="text-sm text-gray-700">
-                        <Link to={`/product-details/${product.id}`}>
-                          <span aria-hidden="true" className="absolute inset-0" />
-                          {product.title}
-                        </Link>
+
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {product.title}
+
                       </h3>
                       <p className="mt-1 text-sm text-gray-500"><span className='text-gray-800 mr-3'>Rating</span> {product.rating}</p>
                     </div>
@@ -322,6 +322,7 @@ function ProductGrid({ products }) {
                     </div>
                   </div>
                 </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -336,14 +337,14 @@ function Pagination({ page, handlePage, products, totalItems }) {
 
       <div>
         <p className="text-sm text-gray-700">
-          Showing <span className="font-medium">{(page - 1) * ITEMS_PER_PAGE + 1}</span> to <span className="font-medium">{page * ITEMS_PER_PAGE > products.items ? products.items :  page* ITEMS_PER_PAGE }</span> of{' '}
+          Showing <span className="font-medium">{(page - 1) * ITEMS_PER_PAGE + 1}</span> to <span className="font-medium">{page * ITEMS_PER_PAGE > products.items ? products.items : page * ITEMS_PER_PAGE}</span> of{' '}
           <span className="font-medium">{products.items}</span> results
         </p>
       </div>
       <div>
         <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
           <div
-             onClick={(e)=> handlePage(page > 1 ?  page - 1: page)}
+            onClick={(e) => handlePage(page > 1 ? page - 1 : page)}
             className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 cursor-pointer"
           >
             <span className="sr-only">Previous</span>
@@ -363,7 +364,7 @@ function Pagination({ page, handlePage, products, totalItems }) {
 
 
           <div
-           onClick={(e)=> handlePage(page < products.items ?  page + 1: page)}
+            onClick={(e) => handlePage(page < products.items ? page + 1 : page)}
             className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 cursor-pointer ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
           >
             <span className="sr-only">Next</span>

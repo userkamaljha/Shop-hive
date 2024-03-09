@@ -2,6 +2,8 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectLoggedInUser } from '../auth/authSlice'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -15,6 +17,7 @@ function classNames(...classes) {
   }
 
 function Navbar() {
+  const user = useSelector(selectLoggedInUser)
 
     return (
       <>
@@ -46,7 +49,7 @@ function Navbar() {
                 </div>
                 </Link>
                 <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
+                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
@@ -122,12 +125,12 @@ function Navbar() {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <Link
+                            to="/login"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Sign out
-                          </a>
+                            Sign out 
+                          </Link>
                         )}
                       </Menu.Item>
                     </Menu.Items>
