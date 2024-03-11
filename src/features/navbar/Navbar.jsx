@@ -4,6 +4,7 @@ import { Bars3Icon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outli
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectLoggedInUser } from '../auth/authSlice'
+import { selectItems } from '../cart/cartSlice'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -18,7 +19,7 @@ function classNames(...classes) {
 
 function Navbar() {
   const user = useSelector(selectLoggedInUser)
-
+ const items = useSelector(selectItems)
     return (
       <>
     <Disclosure as="nav" className="bg-gray-800">
@@ -76,9 +77,9 @@ function Navbar() {
                   <ShoppingBagIcon className="h-6 w-6 -mr-2 z-10" aria-hidden="true" />
 
                 </Link>
-                  <span className="inline-flex items-center mb-4 rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 z-0">
-                  2
-                   </span>
+                  {items.length > 0 && <span className="inline-flex items-center mb-4 rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-red-500 ring-1 ring-inset ring-gray-500/10 z-0">
+                  { items.length}
+                   </span>}
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">

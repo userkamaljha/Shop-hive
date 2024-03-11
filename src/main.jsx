@@ -16,7 +16,7 @@ import Protected from './features/auth/components/Protected.jsx'
 let router = createBrowserRouter([
   {
     path:'/',
-    element: <App/>
+    element:<Protected> <App/></Protected>
   },
   {path:'/login',
    element:<LoginPage/>
@@ -34,7 +34,7 @@ let router = createBrowserRouter([
   },
   {
     path:'/product-details/:id',
-    element:<ProductDetailsPage/>
+    element:<Protected><ProductDetailsPage/></Protected>
   },
 
 ])
