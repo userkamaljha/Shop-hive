@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  selectCount,
+} from '../userSlice';
 
-export default function Order() {
+export default function Counter() {
   const dispatch = useDispatch();
 
 

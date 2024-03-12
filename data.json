@@ -697,6 +697,137 @@
     }
   ],
   "orders": [
-   
+    {
+      "id": "b6b6",
+      "items": [
+        {
+          "0": {
+            "id": "2",
+            "title": "iPhone X",
+            "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+            "price": 899,
+            "discountPercentage": 17.94,
+            "rating": 4.44,
+            "stock": 34,
+            "brand": "Apple",
+            "category": "smartphones",
+            "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+            "images": [
+              "https://cdn.dummyjson.com/product-images/2/1.jpg",
+              "https://cdn.dummyjson.com/product-images/2/2.jpg",
+              "https://cdn.dummyjson.com/product-images/2/3.jpg",
+              "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+            ]
+          },
+          "id": "89a6",
+          "quantity": 1,
+          "user": "3ac2"
+        }
+      ],
+      "totalAmount": 899,
+      "totalItems": 1,
+      "user": {
+        "id": "3ac2",
+        "email": "ankitsharma@gmail.com",
+        "addresses": [
+          {
+            "name": "Kamal jha",
+            "email": "four@gmail.com",
+            "contactNo": "e253647",
+            "street": "xyz streeet",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          },
+          {
+            "name": "nikhil",
+            "email": "ankitsharma@gmail.com",
+            "contactNo": "13253647",
+            "street": "xyz  2 streeet",
+            "city": "rohtak",
+            "state": "haryana",
+            "pincode": "132`124"
+          }
+        ],
+        "password": "Kmala123"
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Kamal jha",
+        "email": "four@gmail.com",
+        "contactNo": "e253647",
+        "street": "xyz streeet",
+        "city": "panipat",
+        "state": "haryana",
+        "pincode": "132103"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "5604",
+      "items": [
+        {
+          "0": {
+            "id": "7",
+            "title": "Samsung Galaxy Book",
+            "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+            "price": 1499,
+            "discountPercentage": 4.15,
+            "rating": 4.25,
+            "stock": 50,
+            "brand": "Samsung",
+            "category": "laptops",
+            "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+            "images": [
+              "https://cdn.dummyjson.com/product-images/7/1.jpg",
+              "https://cdn.dummyjson.com/product-images/7/2.jpg",
+              "https://cdn.dummyjson.com/product-images/7/3.jpg",
+              "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+            ]
+          },
+          "id": "29b7",
+          "quantity": 1,
+          "user": "3ac2"
+        }
+      ],
+      "totalAmount": 1499,
+      "totalItems": 1,
+      "user": {
+        "id": "3ac2",
+        "email": "ankitsharma@gmail.com",
+        "addresses": [
+          {
+            "name": "Kamal jha",
+            "email": "four@gmail.com",
+            "contactNo": "e253647",
+            "street": "xyz streeet",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          },
+          {
+            "name": "nikhil",
+            "email": "ankitsharma@gmail.com",
+            "contactNo": "13253647",
+            "street": "xyz  2 streeet",
+            "city": "rohtak",
+            "state": "haryana",
+            "pincode": "132`124"
+          }
+        ],
+        "password": "Kmala123"
+      },
+      "paymentMethod": "card",
+      "selectedAddress": {
+        "name": "nikhil",
+        "email": "ankitsharma@gmail.com",
+        "contactNo": "13253647",
+        "street": "xyz  2 streeet",
+        "city": "rohtak",
+        "state": "haryana",
+        "pincode": "132`124"
+      },
+      "status": "pending"
+    }
   ]
 }

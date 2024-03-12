@@ -24,8 +24,8 @@ function OrderSuccessPage() {
                     <p className="text-base flex justify-center w-full font-semibold text-indigo-600">
                         <CheckCircleIcon className="h-20 w-20 text-center"/>
                     </p>
-                    <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Your Order is  Successfully Placed!</h1>
-                    <h2>Order Numbaer # {params?.id}</h2>
+                    <h1 className="mt-4 mb-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Your Order is  Successfully Placed!</h1>
+                    <h2>Order Id <span className="font-semibold bg-gray-100 px-2">#{params?.id}</span></h2>
                     <p className="mt-6 text-base leading-7 text-gray-600">You can check your order in My Account > My Orders.</p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         <Link

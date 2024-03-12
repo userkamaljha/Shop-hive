@@ -13,6 +13,7 @@ import { store } from './app/store.js'
 import Protected from './features/auth/components/Protected.jsx'
 import PageNotFound from './pages/404Page.jsx'
 import OrderSuccessPage from './pages/OrderSuccessPage.jsx'
+import UserOrderPage from './pages/UserOrderPage.jsx'
 
 
 let router = createBrowserRouter([
@@ -41,6 +42,10 @@ let router = createBrowserRouter([
   {
     path:'/order-success/:id',
     element:<OrderSuccessPage/>
+  },
+  {
+    path:'/myorders',
+    element:<UserOrderPage/>
   },
   {
     path:'*',
