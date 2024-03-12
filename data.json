@@ -694,96 +694,9 @@
       "id": "97e6",
       "quantity": 1,
       "user": "733e"
-    },
-    {
-      "0": {
-        "id": "10",
-        "title": "HP Pavilion 15-DK1056WM",
-        "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
-        "price": 1099,
-        "discountPercentage": 6.18,
-        "rating": 4.43,
-        "stock": 89,
-        "brand": "HP Pavilion",
-        "category": "laptops",
-        "thumbnail": "https://cdn.dummyjson.com/product-images/10/thumbnail.jpeg",
-        "images": [
-          "https://cdn.dummyjson.com/product-images/10/1.jpg",
-          "https://cdn.dummyjson.com/product-images/10/2.jpg",
-          "https://cdn.dummyjson.com/product-images/10/3.jpg",
-          "https://cdn.dummyjson.com/product-images/10/thumbnail.jpeg"
-        ]
-      },
-      "id": "12ae",
-      "quantity": 1,
-      "user": "3ac2"
     }
   ],
   "orders": [
-    {
-      "id": "1bba",
-      "items": [
-        {
-          "0": {
-            "id": "10",
-            "title": "HP Pavilion 15-DK1056WM",
-            "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
-            "price": 1099,
-            "discountPercentage": 6.18,
-            "rating": 4.43,
-            "stock": 89,
-            "brand": "HP Pavilion",
-            "category": "laptops",
-            "thumbnail": "https://cdn.dummyjson.com/product-images/10/thumbnail.jpeg",
-            "images": [
-              "https://cdn.dummyjson.com/product-images/10/1.jpg",
-              "https://cdn.dummyjson.com/product-images/10/2.jpg",
-              "https://cdn.dummyjson.com/product-images/10/3.jpg",
-              "https://cdn.dummyjson.com/product-images/10/thumbnail.jpeg"
-            ]
-          },
-          "id": "12ae",
-          "quantity": 1,
-          "user": "3ac2"
-        }
-      ],
-      "totalAmount": 1099,
-      "totalItems": 1,
-      "user": {
-        "id": "3ac2",
-        "email": "ankitsharma@gmail.com",
-        "addresses": [
-          {
-            "name": "Kamal jha",
-            "email": "four@gmail.com",
-            "contactNo": "e253647",
-            "street": "xyz streeet",
-            "city": "panipat",
-            "state": "haryana",
-            "pincode": "132103"
-          },
-          {
-            "name": "nikhil",
-            "email": "ankitsharma@gmail.com",
-            "contactNo": "13253647",
-            "street": "xyz  2 streeet",
-            "city": "rohtak",
-            "state": "haryana",
-            "pincode": "132`124"
-          }
-        ],
-        "password": "Kmala123"
-      },
-      "paymentMethod": "card",
-      "selectedAddress": {
-        "name": "Kamal jha",
-        "email": "four@gmail.com",
-        "contactNo": "e253647",
-        "street": "xyz streeet",
-        "city": "panipat",
-        "state": "haryana",
-        "pincode": "132103"
-      }
-    }
+   
   ]
 }

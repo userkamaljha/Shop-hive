@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { updateItemAsync, deleteItemFromCardAsync, selectItems } from "../features/cart/cartSlice"
 import { useForm } from "react-hook-form"
 import { createUserAsync, selectLoggedInUser, updateUserAsync } from "../features/auth/authSlice"
-import {createOrderAsync} from "../features/order/orderSlice"
+import {createOrderAsync, selectCurrentOrder} from "../features/order/orderSlice"
 import { useState } from "react"
 
 function CheckoutPage() {
@@ -14,6 +14,7 @@ function CheckoutPage() {
     const totalItems = items.reduce((total, item) => item.quantity + total, 0)
     const [selectedAddress, setSelectedAddress] = useState(null)
     const [paymentMethod, setPaymentMethod] = useState('cash')
+    const orderPlaced = useSelector(selectCurrentOrder)
 
     const handleQuantity = (e, item) => {
         dispatch(updateItemAsync({ ...item, quantity: + e.target.value }))
@@ -35,9 +36,11 @@ function CheckoutPage() {
             totalItems:totalItems,
             user:user,
             paymentMethod:paymentMethod,
-            selectedAddress:selectedAddress
+            selectedAddress:selectedAddress,
+            status: 'pending' //admin can change this status
         }
      dispatch(createOrderAsync(order))
+     dispatch(deleteItemFromCardAsync(order.items[0].id))
     //  todo: redirect to order success page
     //  todo: clear cart after order 
     //  todo: change stock in backend 
@@ -46,6 +49,8 @@ function CheckoutPage() {
 
     return (
         <>
+        {!items.length && <Navigate to ="/" replaced = {true}></Navigate>}
+        {orderPlaced &&  <Navigate to ={`/order-success/${orderPlaced.id}`} replaced = {true}></Navigate>}
             <div className="bg-gray-100 rounded-lg md:flex gap-2 my-8 sm:mx-auto mx-8 py-8 mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
                 <form onSubmit={handleSubmit((data) => {
                     dispatch(updateUserAsync({ ...user, addresses: [...user.addresses, data] }))

@@ -11,6 +11,8 @@ import ProductDetailsPage from './pages/ProductDetailsPage.jsx'
 import { Provider } from 'react-redux'
 import { store } from './app/store.js'
 import Protected from './features/auth/components/Protected.jsx'
+import PageNotFound from './pages/404Page.jsx'
+import OrderSuccessPage from './pages/OrderSuccessPage.jsx'
 
 
 let router = createBrowserRouter([
@@ -35,6 +37,14 @@ let router = createBrowserRouter([
   {
     path:'/product-details/:id',
     element:<Protected><ProductDetailsPage/></Protected>
+  },
+  {
+    path:'/order-success/:id',
+    element:<OrderSuccessPage/>
+  },
+  {
+    path:'*',
+    element:<PageNotFound/>
   },
 
 ])
