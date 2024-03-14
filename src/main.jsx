@@ -15,6 +15,8 @@ import PageNotFound from './pages/404Page.jsx'
 import OrderSuccessPage from './pages/OrderSuccessPage.jsx'
 import UserOrderPage from './pages/UserOrderPage.jsx'
 import UserProfilePage from './pages/UserProfilePage.jsx'
+import Logout from './features/auth/components/Logout.jsx'
+import ForgotPasswordPage from './pages/ForgotPassword.jsx'
 
 
 let router = createBrowserRouter([
@@ -51,6 +53,14 @@ let router = createBrowserRouter([
   {
     path:'/profile',
     element: <Protected><UserProfilePage/></Protected>
+  },
+  {
+    path:'/logout',
+    element: <Logout></Logout>
+  },
+  {
+    path:'/forgot-password',
+    element: <ForgotPasswordPage></ForgotPasswordPage>
   },
   {
     path:'*',

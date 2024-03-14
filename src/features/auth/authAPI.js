@@ -45,3 +45,11 @@ export function checkUser(loginInfo) {
     }
     );
   }
+
+  export function SignOut(userId) {
+    return new Promise(async (resolve) =>{
+     
+      resolve({data: 'success'})
+    }
+    );
+  }
