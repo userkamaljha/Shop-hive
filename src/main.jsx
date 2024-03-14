@@ -14,6 +14,7 @@ import Protected from './features/auth/components/Protected.jsx'
 import PageNotFound from './pages/404Page.jsx'
 import OrderSuccessPage from './pages/OrderSuccessPage.jsx'
 import UserOrderPage from './pages/UserOrderPage.jsx'
+import UserProfilePage from './pages/UserProfilePage.jsx'
 
 
 let router = createBrowserRouter([
@@ -45,7 +46,11 @@ let router = createBrowserRouter([
   },
   {
     path:'/myorders',
-    element:<UserOrderPage/>
+    element:<Protected><UserOrderPage/></Protected>
+  },
+  {
+    path:'/profile',
+    element: <Protected><UserProfilePage/></Protected>
   },
   {
     path:'*',

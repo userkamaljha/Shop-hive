@@ -12,10 +12,10 @@ export default function UserOrders() {
         dispatch(fetchLoggedInUserOrdersAsync(user.id))
     }, [user.id, dispatch])
 
-    return (
+    {return orders.length !== 0 ?(
         <>
             {orders.map((order) => (
-                <div className="bg-gray-100 my-8 rounded-sm mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+               <div className="bg-gray-100 my-8 rounded-sm mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                     <h1 className="text-4xl py-8 font-bold tracking-tight text-gray-900"> Order id :  #{order.id}</h1>
                     <h3 className="text-lg text-red-700 py-8 font-semibold   ">Order Status : {order.status}</h3>
                     <div className="mt-8  py-4   ">
@@ -109,5 +109,7 @@ export default function UserOrders() {
                 </div>
             ))}
         </>
-    );
+    )  :  <div className=" text-center my-8 rounded-sm mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <h1 className='font-semibold text-2xl '>No Orders Found!</h1>
+    </div>}
 }

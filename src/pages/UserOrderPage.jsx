@@ -6,6 +6,7 @@ function UserOrderPage() {
     return (
       <>
        <Navbar/>
+       <h1 className="text-2xl mx-28 my-8 font-semibold">My Orders</h1>
       <UserOrders/>
       </>
     )
