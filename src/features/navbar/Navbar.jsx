@@ -7,9 +7,9 @@ import { selectLoggedInUser } from '../auth/authSlice'
 import { selectItems } from '../cart/cartSlice'
 
 const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'Login', href: '/login', current: false },
-  { name: 'Signup', href: '/signup', current: false },
+  { name: 'Home', href: '/', current: true, user: true },
+  { name: 'Dashboard', href: '/', current: false, user: true },
+  { name: 'Admin', href: '/admin', current: false , admin: true },
 ]
 
 
@@ -52,7 +52,7 @@ function Navbar() {
                 <div className="hidden sm:ml-6 sm:block">
                    <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <Link
+                        item[user.role] ? (<Link
                         key={item.name}
                         to={item.href}
                         className={classNames(
@@ -62,7 +62,7 @@ function Navbar() {
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
-                      </Link>
+                      </Link>) : null
                     ))}
                   </div>
                 </div>

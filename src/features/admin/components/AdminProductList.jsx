@@ -3,9 +3,9 @@ import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCategoriesAsync, fetchBrandsAsync, fetchProductsByFilterAsync, selectAllBrands, selectAllCategories, selectAllProducts } from '../productSlice'
+import { fetchCategoriesAsync, fetchBrandsAsync, fetchProductsByFilterAsync, selectAllBrands, selectAllCategories, selectAllProducts } from '../../product/productSlice'
 import { ITEMS_PER_PAGE } from '../../../app/constants'
 // import { fetchBrands, fetchCategories } from '../productAPI'
 
@@ -20,7 +20,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-function ProductList() {
+function AdminProductList() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const products = useSelector(selectAllProducts)
   const brands = useSelector(selectAllBrands)
@@ -293,40 +293,58 @@ function ProductGrid({ products }) {
   return (<>
     {products.length !== 0 ? (<div className="lg:col-span-3">
       <div>
+        <Link to= '/admin/product-form'>
+        <button
+          type="button"
+          className=" my-4 mx-10 rounded-md bg-yellow-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Add New Product  </button>
+          </Link>
         <div className="bg-white ">
           <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
               {products.data.map((product) => (
-                  <Link to={`/product-details/${product.id}`}>
-                <div key={product.id} className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={product.thumbnail}
-                      alt={product.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <div>
-                      <h3 className="text-sm text-gray-700">
+                <div>
+                  <Link to={`/admin/product-details/${product.id}`}>
+                    <div key={product.id} className="group relative">
+                      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                        <img
+                          src={product.thumbnail}
+                          alt={product.title}
+                          className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                        />
+                      </div>
+                      <div className="mt-4 flex justify-between">
+                        <div>
+                          <h3 className="text-sm text-gray-700">
 
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {product.title}
+                            <span aria-hidden="true" className="absolute inset-0" />
+                            {product.title}
 
-                      </h3>
-                      <p className="mt-1 text-sm text-gray-500"><span className='text-gray-800 mr-3'>Rating</span> {product.rating}</p>
+                          </h3>
+                          <p className="mt-1 text-sm text-gray-500"><span className='text-gray-800 mr-3'>Rating</span> {product.rating}</p>
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">$ {Math.round(product.price * (1 - product.discountPercentage / 100))}</p>
+                          <p className="text-sm  font-medium line-through text-gray-400">{product.price}</p>
+                        </div>
+                      </div>
+                       { product.deleted &&  <p className='text-red-300 text-sm capitalize'>deleted post</p>}
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">$ {Math.round(product.price * (1 - product.discountPercentage / 100))}</p>
-                      <p className="text-sm  font-medium line-through text-gray-400">{product.price}</p>
-                    </div>
-                  </div>
+                  </Link>
+                  <Link to={`/admin/product-form/edit/${product.id}`}>
+                  <button
+                    type="button"
+                    className=" my-4 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    Edit Product   </button>
+                  </Link>
                 </div>
-                {/* todo : server will Not display deleted flag true product   */}
-                { product.deleted &&  <p className='text-red-300 text-sm capitalize'>deleted post</p>}
-                </Link>
+
               ))}
+
             </div>
+
           </div>
         </div>
       </div></div>) : <h1>no product found!!</h1>}
@@ -432,6 +450,6 @@ function DesktopFilter({ handleFilter, filters }) {
 
 
 
-export default ProductList
+export default AdminProductList
 
 

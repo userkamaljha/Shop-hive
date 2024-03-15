@@ -11,6 +11,7 @@ export default function UserProfile() {
       <div className="bg-gray-100 my-8 rounded-sm mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                     <h1 className="text-4xl py-8 font-bold tracking-tight text-gray-900"> Name : {user.name ? user.name : 'Guest'}</h1>
                     <h3 className="text-lg text-red-700 py-8 font-semibold   "> email address : {user.email}</h3>
+                    {user.role === 'admin' && (<h3 className="text-lg text-red-700  font-semibold   "> role : {user.role}</h3>)}
 
                     <div className='py-5'>
                     <h3>User addresses: </h3>

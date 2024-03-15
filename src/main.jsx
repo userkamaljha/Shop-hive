@@ -17,12 +17,20 @@ import UserOrderPage from './pages/UserOrderPage.jsx'
 import UserProfilePage from './pages/UserProfilePage.jsx'
 import Logout from './features/auth/components/Logout.jsx'
 import ForgotPasswordPage from './pages/ForgotPassword.jsx'
+import ProtectedAdmin from './features/auth/components/ProtectedAdmin.jsx'
+import AdminHomePage from './pages/AdminHomePage.jsx'
+import AdminProductDetailsPage from './pages/AdminProductDetailsPage.jsx'
+import AdminProductFormPage from './pages/AdminProductFormPage.jsx'
 
 
 let router = createBrowserRouter([
   {
     path:'/',
     element:<Protected> <App/></Protected>
+  },
+  {
+    path:'/admin',
+    element:<ProtectedAdmin><AdminHomePage/></ProtectedAdmin>
   },
   {path:'/login',
    element:<LoginPage/>
@@ -43,6 +51,18 @@ let router = createBrowserRouter([
     element:<Protected><ProductDetailsPage/></Protected>
   },
   {
+    path:'/admin/product-details/:id',
+    element:<ProtectedAdmin><AdminProductDetailsPage/></ProtectedAdmin>
+  },
+  {
+    path:'/admin/product-form',
+    element:<ProtectedAdmin><AdminProductFormPage/></ProtectedAdmin>
+  },
+  {
+    path:'/admin/product-form/edit/:id',
+    element:<ProtectedAdmin><AdminProductFormPage/></ProtectedAdmin>
+  },
+  {
     path:'/order-success/:id',
     element:<OrderSuccessPage/>
   },
@@ -57,6 +77,10 @@ let router = createBrowserRouter([
   {
     path:'/logout',
     element: <Logout></Logout>
+  },
+  {
+    path:'/forgot-password',
+    element: <ForgotPasswordPage></ForgotPasswordPage>
   },
   {
     path:'/forgot-password',
