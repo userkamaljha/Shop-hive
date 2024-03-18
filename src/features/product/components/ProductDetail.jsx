@@ -5,7 +5,7 @@ import Navbar from '../../navbar/Navbar'
 import {useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { fetchProductByIdAsync, selectProductById } from '../productSlice'
-import { addToCartAsync } from '../../cart/cartSlice'
+import { addToCartAsync, selectItems } from '../../cart/cartSlice'
 import { selectLoggedInUser } from '../../auth/authSlice'
 import { discountPrice } from '../../../app/constants'
 
@@ -39,12 +39,18 @@ export default function ProductDetail() {
     const [selectedSize, setSelectedSize] = useState(sizes[2])
     const user = useSelector(selectLoggedInUser)
     const dispatch = useDispatch()
+    const items = useSelector(selectItems)
     const params = useParams()
     const product = useSelector(selectProductById)
 
     const handleCart = (e)=>{
         e.preventDefault()
-    dispatch(addToCartAsync({...product, quantity:1, user: user.id}))
+        if(items.findIndex(item => item.productId === product.id)<  0){
+            const newItem = {...product, productId: product.id, quantity:1, user: user.id}
+            delete newItem['id']
+        dispatch(addToCartAsync(newItem))
+
+        } else(console.log('already added!!'))
     }
     
 

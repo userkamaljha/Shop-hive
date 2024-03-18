@@ -5,6 +5,8 @@ import { EyeIcon } from "@heroicons/react/24/outline"
 import { PencilIcon } from "@heroicons/react/24/outline"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import Pagination from "../../common feature/Pagination"
+import { selectAllProducts } from "../../product/productSlice"
 
 
 
@@ -13,15 +15,15 @@ function AdminOrder() {
   const dispatch = useDispatch()
   const totalOrders = useSelector(selectTotalOrders)
   const orders = useSelector(selectAllOrder)
+  const totalItems = 1
   console.log(orders);
   const [editableOrderId , setEditableOrderId] = useState(-1)
 
-  
 
- 
   const handleEdit = (e, order)=>{
     setEditableOrderId(order.id)
   }
+  
   const handleStatus = (e, order)=>{
     const updatedOrder = {...order, status: e.target.value};
     dispatch(updateOrderAsync(updatedOrder))
@@ -41,13 +43,24 @@ function AdminOrder() {
       default : return 'bg-purple-200 text-purple-900'
     }
   }
-  useEffect(() => {
+  const handlePage = (page) => {
+    setPage(page)
     const pagination = {
       _page: page,
       _per_page: ITEMS_PER_PAGE
     }
     dispatch(fetchAllOrdersAsync(pagination))
+    }
+  useEffect(() => {
+    const pagination = {
+      _page: page,
+      _per_page: ITEMS_PER_PAGE
+    }
+    console.log(totalItems.pages);
+
+    dispatch(fetchAllOrdersAsync(pagination))
   }, [dispatch, page, editableOrderId])
+ 
  return  (
     <>
      <div className="bg-white  mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -83,7 +96,7 @@ function AdminOrder() {
             </tr>
           </thead>
           <tbody >
-           {orders && orders.map(order => <tr>
+           {orders.data && orders.data.map(order => <tr>
            
               <td className="px-5 py-5 border-b  border-gray-200 bg-white text-sm">
                 {order.items.map(item => (<div className="flex items-center">
@@ -143,22 +156,9 @@ function AdminOrder() {
             </tr>) }
           </tbody>
         </table>
-        <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-          <span className="text-xs xs:text-sm text-gray-900">
-            Showing 1 to 4 of 50 Entries
-          </span>
-          <div className="inline-flex mt-2 xs:mt-0">
-            <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l">
-              Prev
-            </button>
-            &nbsp; &nbsp;
-            <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r">
-              Next
-            </button>
-          </div>
-        </div>
       </div>
     </div>
+        <Pagination page={page} totalItems={totalItems} handlePage={handlePage} products={orders} />
   </div>
 </div>
      </div>

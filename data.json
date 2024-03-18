@@ -900,7 +900,7 @@
         "state": "haryana",
         "pincode": "132103"
       },
-      "status": "dispatched"
+      "status": "pending"
     },
     {
       "id": "b1a0",
@@ -1533,6 +1533,73 @@
         "pincode": "132103"
       },
       "status": "dispatched"
+    },
+    {
+      "id": "4142",
+      "items": [
+        {
+          "0": {
+            "id": "2",
+            "title": "iPhone X",
+            "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+            "price": 897,
+            "discountPercentage": 17.94,
+            "rating": 4,
+            "stock": 34,
+            "brand": "Apple",
+            "category": "smartphones",
+            "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+            "images": [
+              "https://cdn.dummyjson.com/product-images/2/1.jpg",
+              "https://cdn.dummyjson.com/product-images/2/2.jpg",
+              "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+              "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+            ]
+          },
+          "id": "8100",
+          "quantity": 1,
+          "user": "7e4a"
+        }
+      ],
+      "totalAmount": 736,
+      "totalItems": 1,
+      "user": {
+        "id": "7e4a",
+        "email": "userkamaljha@gmail.com",
+        "password": "Kamal123",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "kamal jha",
+            "email": "userkamaljha@gmail.com",
+            "contactNo": "13253647",
+            "street": "xyz  2 streeet",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          },
+          {
+            "name": "nikhil",
+            "email": "nikhil@gmail.com",
+            "contactNo": "9729989246",
+            "street": "xyz Model Town",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          }
+        ]
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "nikhil",
+        "email": "nikhil@gmail.com",
+        "contactNo": "9729989246",
+        "street": "xyz Model Town",
+        "city": "panipat",
+        "state": "haryana",
+        "pincode": "132103"
+      },
+      "status": "pending"
     }
   ]
 }

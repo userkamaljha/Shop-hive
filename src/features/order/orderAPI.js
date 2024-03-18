@@ -25,13 +25,13 @@ export function updateOrder (order) {
   );
 }
 export function fetchAllOrders(pagination) {
-  // let queryString = ''
-  // for(let key in pagination){
-  //   queryString += `${key}=${pagination[key]}&`
-  // }
+  let queryString = ''
+  for(let key in pagination){
+    queryString += `${key}=${pagination[key]}&`
+  }
 
   return new Promise(async (resolve) =>{
-    const response = await fetch('http://localhost:3000/orders' ) 
+    const response = await fetch('http://localhost:3000/orders?'+ queryString ) 
     const data = await response.json()
     const totalOrders = await response.headers.get('X-Total-Count')
     resolve({data: {orders:data, totalOrders: totalOrders}})
