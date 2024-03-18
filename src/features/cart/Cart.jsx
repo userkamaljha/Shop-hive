@@ -3,38 +3,16 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { selectItems, updateItemAsync, deleteItemFromCardAsync } from '../cart/cartSlice'
+import { discountPrice } from '../../app/constants';
 
-const products = [
-  {
-    id: 1,
-    name: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '$90.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-  },
-  {
-    id: 2,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$32.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  // More products...
-]
+
 
 
 export default function Cart() {
   const dispatch = useDispatch()
   const items = useSelector(selectItems)
   const [open, setOpen] = useState(true)
-  const totalAmount = items.reduce((amount, item) => item[0].price * item.quantity + amount, 0)
+  const totalAmount = items.reduce((amount, item) => discountPrice(item) * item.quantity + amount, 0)
   const totalItems = items.reduce((total, item) => item.quantity + total, 0)
   const handleQuantity = (e, item) => {
     dispatch(updateItemAsync({ ...item, quantity: + e.target.value }))
@@ -69,7 +47,7 @@ export default function Cart() {
                         <h3>
                           <a href={item.href}>{item[0].title}</a>
                         </h3>
-                        <p className="ml-4">$ {item[0].price}</p>
+                        <p className="ml-4">$ {discountPrice(item)}</p>
                       </div>
                       <p className="mt-1 text-sm text-gray-500">{item[0].brand}</p>
                     </div>

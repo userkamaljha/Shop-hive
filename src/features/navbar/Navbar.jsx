@@ -10,6 +10,7 @@ const navigation = [
   { name: 'Home', href: '/', current: true, user: true },
   { name: 'Dashboard', href: '/', current: false, user: true },
   { name: 'Admin', href: '/admin', current: false , admin: true },
+  { name: 'Orders', href: '/admin/orders', current: false , admin: true },
 ]
 
 

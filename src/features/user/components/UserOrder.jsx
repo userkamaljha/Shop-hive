@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectLoggedInUser } from '../../auth/authSlice';
 import { fetchLoggedInUserOrdersAsync, selectUserOrders } from '../userSlice';
 import { Link } from 'react-router-dom';
+import { discountPrice } from '../../../app/constants';
 
 export default function UserOrders() {
     const dispatch = useDispatch();
@@ -11,6 +12,7 @@ export default function UserOrders() {
     useEffect(() => {
         dispatch(fetchLoggedInUserOrdersAsync(user.id))
     }, [user.id, dispatch])
+    console.log(orders)
 
     {return orders.length !== 0 ?(
         <>
@@ -39,7 +41,7 @@ export default function UserOrders() {
                                                     <h3>
                                                         <a href={item.href}>{item[0].title}</a>
                                                     </h3>
-                                                    <p className="ml-4">$ {item[0].price}</p>
+                                                    <p className="ml-4">$ {discountPrice(item)}</p>
                                                 </div>
                                                 <p className="mt-1 text-sm text-gray-500">{item[0].brand}</p>
                                             </div>
@@ -79,7 +81,7 @@ export default function UserOrders() {
                     </div>
                     <div className='py-5'>
                     <h3>shipping address: </h3>
-                    <div
+                    {/* <div
                         className="flex my-4 justify-between gap-x-6 px-5 py-5 border-solid border-2 border-gray-200"
                     >
                         <div className="flex gap-x-4">
@@ -103,7 +105,7 @@ export default function UserOrders() {
                                 {order.selectedAddress.state}
                             </p>
                         </div>
-                    </div>
+                    </div> */}
                     </div>
                     
                 </div>

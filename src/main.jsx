@@ -21,6 +21,7 @@ import ProtectedAdmin from './features/auth/components/ProtectedAdmin.jsx'
 import AdminHomePage from './pages/AdminHomePage.jsx'
 import AdminProductDetailsPage from './pages/AdminProductDetailsPage.jsx'
 import AdminProductFormPage from './pages/AdminProductFormPage.jsx'
+import AdminOrderPage from './pages/AdminOrderPage.jsx'
 
 
 let router = createBrowserRouter([
@@ -81,6 +82,11 @@ let router = createBrowserRouter([
   {
     path:'/forgot-password',
     element: <ForgotPasswordPage></ForgotPasswordPage>
+  },
+  {
+    path:'/admin/orders',
+    element: <ProtectedAdmin><AdminOrderPage/>
+     </ProtectedAdmin>
   },
   {
     path:'/forgot-password',

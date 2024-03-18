@@ -5,12 +5,13 @@ import { useForm } from "react-hook-form"
 import { createUserAsync, selectLoggedInUser, updateUserAsync } from "../features/auth/authSlice"
 import {createOrderAsync, selectCurrentOrder} from "../features/order/orderSlice"
 import { useState } from "react"
+import { discountPrice } from "../app/constants"
 
 function CheckoutPage() {
     const dispatch = useDispatch()
     const items = useSelector(selectItems)
     const { register, reset, handleSubmit, watch, formState: { errors } } = useForm()
-    const totalAmount = items.reduce((amount, item) => item[0].price * item.quantity + amount, 0)
+    const totalAmount = items.reduce((amount, item) =>discountPrice(items[0]) * item.quantity + amount, 0)
     const totalItems = items.reduce((total, item) => item.quantity + total, 0)
     const [selectedAddress, setSelectedAddress] = useState(null)
     const [paymentMethod, setPaymentMethod] = useState('cash')
@@ -284,7 +285,7 @@ function CheckoutPage() {
                                                     <h3>
                                                         <a href={item.href}>{item[0].title}</a>
                                                     </h3>
-                                                    <p className="ml-4">$ {item[0].price}</p>
+                                                    <p className="ml-4">$ {discountPrice(item) }</p>
                                                 </div>
                                                 <p className="mt-1 text-sm text-gray-500">{item[0].brand}</p>
                                             </div>
