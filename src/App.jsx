@@ -5,6 +5,8 @@ import SignupPage from './pages/SignupPage'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchItemByUserIdAsync } from './features/cart/cartSlice'
 import { selectLoggedInUser } from './features/auth/authSlice'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -15,6 +17,9 @@ useEffect(()=>{
     dispatch(fetchItemByUserIdAsync(user.id))
   }
 }, [user.id])
+
+
+
   return (
     <>
     <Home></Home>

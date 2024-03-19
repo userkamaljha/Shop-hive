@@ -5,11 +5,11 @@ import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCategoriesAsync, fetchBrandsAsync, fetchProductsByFilterAsync, selectAllBrands, selectAllCategories, selectAllProducts } from '../productSlice'
+import { fetchCategoriesAsync, fetchBrandsAsync, fetchProductsByFilterAsync, selectAllBrands, selectAllCategories, selectAllProducts, selectStatus } from '../productSlice'
 import { ITEMS_PER_PAGE } from '../../../app/constants'
-import Pagination from '../../common feature/Pagination'
+import Pagination from '../../common/Pagination'
+import { ClipLoader } from 'react-spinners' 
 // import { fetchBrands, fetchCategories } from '../productAPI'
-
 
 const sortOptions = [
   { name: 'Best Rating', sort: '-rating', current: false },
@@ -26,6 +26,7 @@ function ProductList() {
   const products = useSelector(selectAllProducts)
   const brands = useSelector(selectAllBrands)
   const categories = useSelector(selectAllCategories)
+  const productStatus = useSelector(selectStatus)
   const dispatch = useDispatch()
   const totalItems = 0
   const [filter, setFilter] = useState({})
@@ -166,7 +167,7 @@ function ProductList() {
               <DesktopFilter handleFilter={handleFilter} filters={filters} />
 
               {/* Product grid */}
-              <ProductGrid products={products} />
+              <ProductGrid products={products} productStatus ={productStatus} />
             </div>
           </section>
         </main>
@@ -193,7 +194,6 @@ function ProductList() {
     </div>
   )
 }
-
 
 function MobileFilter({ mobileFiltersOpen, setMobileFiltersOpen, handleFilter, filters }) {
   return (<>
@@ -290,9 +290,11 @@ function MobileFilter({ mobileFiltersOpen, setMobileFiltersOpen, handleFilter, f
   </>)
 }
 
-function ProductGrid({ products }) {
+function ProductGrid({ products, productStatus }) {
   return (<>
+  
     {products.length !== 0 ? (<div className="lg:col-span-3">
+    {productStatus === 'loading' && <span className='flex justify-center items-center w-auto h-auto' ><ClipLoader color="#3949AB" size={60} speedMultiplier={1}/></span> }
       <div>
         <div className="bg-white ">
           <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">

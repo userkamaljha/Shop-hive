@@ -12,7 +12,6 @@ export default function UserOrders() {
     useEffect(() => {
         dispatch(fetchLoggedInUserOrdersAsync(user.id))
     }, [user.id, dispatch])
-    console.log(orders)
 
     {return orders.length !== 0 ?(
         <>

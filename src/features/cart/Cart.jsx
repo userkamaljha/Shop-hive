@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { selectItems, updateItemAsync, deleteItemFromCardAsync } from '../cart/cartSlice'
 import { discountPrice } from '../../app/constants';
+import Modal from '../common/Modal';
+
 
 
 
@@ -14,10 +16,10 @@ export default function Cart() {
   const [open, setOpen] = useState(true)
   const totalAmount = items.reduce((amount, item) => discountPrice(item) * item.quantity + amount, 0)
   const totalItems = items.reduce((total, item) => item.quantity + total, 0)
+  const [showModal ,setShowModal] = useState(null)
   const handleQuantity = (e, item) => {
     dispatch(updateItemAsync({ ...item, quantity: + e.target.value }))
   }
-
   const handleRemove = (e, id) => {
     dispatch(deleteItemFromCardAsync(id))
   }
@@ -66,8 +68,16 @@ export default function Cart() {
                       </div>
 
                       <div className="flex">
+                        <Modal
+                          title='delete'
+                          message={`do you want to delete ${item[0].title}`}
+                          cancel='cancel'
+                          action='delete cart'
+                          openAction={(e) => handleRemove(e, item.id)} 
+                          cancelAction={(e)=> setShowModal(null)}
+                          showModal = {showModal === item.id}></Modal>
                         <button
-                          onClick={(e) => handleRemove(e, item.id)}
+                          onClick={e => setShowModal(item.id)}
                           type="button"
                           title='Remove Item'
                           className="font-medium text-indigo-600 hover:text-indigo-500"

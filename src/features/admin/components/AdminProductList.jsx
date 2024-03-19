@@ -5,8 +5,9 @@ import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import { Link, Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCategoriesAsync, fetchBrandsAsync, fetchProductsByFilterAsync, selectAllBrands, selectAllCategories, selectAllProducts } from '../../product/productSlice'
+import { fetchCategoriesAsync, fetchBrandsAsync, fetchProductsByFilterAsync, selectAllBrands, selectAllCategories, selectAllProducts, selectStatus } from '../../product/productSlice'
 import { ITEMS_PER_PAGE } from '../../../app/constants'
+import { ClipLoader } from 'react-spinners'
 // import { fetchBrands, fetchCategories } from '../productAPI'
 
 
@@ -30,6 +31,7 @@ function AdminProductList() {
   const [filter, setFilter] = useState({})
   const [sort, setSort] = useState({})
   const [page, setPage] = useState(1)
+  const productStatus = useSelector(selectStatus)
   const filters = [
     {
       id: 'category',
@@ -165,7 +167,7 @@ function AdminProductList() {
               <DesktopFilter handleFilter={handleFilter} filters={filters} />
 
               {/* Product grid */}
-              <ProductGrid products={products} />
+              <ProductGrid products={products} productStatus ={productStatus} />
             </div>
           </section>
         </main>
@@ -289,9 +291,10 @@ function MobileFilter({ mobileFiltersOpen, setMobileFiltersOpen, handleFilter, f
   </>)
 }
 
-function ProductGrid({ products }) {
+function ProductGrid({ products, productStatus }) {
   return (<>
     {products.length !== 0 ? (<div className="lg:col-span-3">
+    {productStatus === 'loading' && <span className='flex justify-center items-center w-auto h-auto' ><ClipLoader color="#3949AB" size={60} speedMultiplier={1}/></span> }
       <div>
         <Link to= '/admin/product-form'>
         <button

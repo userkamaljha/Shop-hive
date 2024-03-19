@@ -26,7 +26,6 @@ export default function ForgotPassword() {
             className="space-y-6"
             noValidate
             onSubmit={handleSubmit((data) => {
-              console.log('enter email', data);
               reset()
             })} >
             <div>

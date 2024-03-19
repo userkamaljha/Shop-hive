@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectLoggedInUser } from '../auth/authSlice'
 import { selectItems } from '../cart/cartSlice'
+import Logo from "../../assets/logo.png"
+
 
 const navigation = [
-  { name: 'Home', href: '/', current: true, user: true },
-  { name: 'Dashboard', href: '/', current: false, user: true },
+  { name: 'Products', href: '/', current: false, user: true },
+  { name: 'Products', href: '/', current: false, admin: true },
   { name: 'Admin', href: '/admin', current: false , admin: true },
   { name: 'Orders', href: '/admin/orders', current: false , admin: true },
 ]
@@ -23,7 +25,7 @@ function Navbar() {
  const items = useSelector(selectItems)
     return (
       <>
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-900">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -41,15 +43,18 @@ function Navbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                
               <Link to= '/'>
-                <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                <div className="">
+                  {/* <img
+                    className="h-12 w-auto"
+                    src={Logo}
                     alt="Your Company"
-                  />
+                  /> */}
+                  <p className='text-lg text-[#9CCAF2] font-sans font-medium text-white ml-1'>Shop Hive</p>
                 </div>
                 </Link>
+
                 <div className="hidden sm:ml-6 sm:block">
                    <div className="flex space-x-4">
                     {navigation.map((item) => (
@@ -68,6 +73,7 @@ function Navbar() {
                   </div>
                 </div>
               </div>
+
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <Link
                   to='/cart'

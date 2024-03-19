@@ -765,6 +765,30 @@
       "id": "97e6",
       "quantity": 1,
       "user": "733e"
+    },
+    {
+      "0": {
+        "id": "9",
+        "title": "Infinix INBOOK",
+        "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+        "price": 1099,
+        "discountPercentage": 11.83,
+        "rating": 4.54,
+        "stock": 96,
+        "brand": "Infinix",
+        "category": "laptops",
+        "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+        "images": [
+          "https://cdn.dummyjson.com/product-images/9/1.jpg",
+          "https://cdn.dummyjson.com/product-images/9/2.png",
+          "https://cdn.dummyjson.com/product-images/9/3.png",
+          "https://cdn.dummyjson.com/product-images/9/4.jpg",
+          "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+        ]
+      },
+      "id": "48ee",
+      "quantity": 1,
+      "user": "835c"
     }
   ],
   "orders": [
@@ -973,7 +997,7 @@
         "state": "haryana",
         "pincode": "132`124"
       },
-      "status": "dispatched"
+      "status": "pending"
     },
     {
       "id": "76e3",

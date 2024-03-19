@@ -5,9 +5,11 @@ import Navbar from '../../navbar/Navbar'
 import {useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { fetchProductByIdAsync, selectProductById } from '../../product/productSlice'
-import { addToCartAsync } from '../../cart/cartSlice'
+import { addToCartAsync, selectItems } from '../../cart/cartSlice'
 import { selectLoggedInUser } from '../../auth/authSlice'
 import { discountPrice } from '../../../app/constants'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
    const  colors= [
@@ -34,7 +36,7 @@ function classNames(...classes) {
 
 
 export default function AdminProductDetail() {
-
+    const items = useSelector(selectItems)
     const [selectedColor, setSelectedColor] = useState(colors[0])
     const [selectedSize, setSelectedSize] = useState(sizes[2])
     const user = useSelector(selectLoggedInUser)
@@ -44,7 +46,38 @@ export default function AdminProductDetail() {
 
     const handleCart = (e)=>{
         e.preventDefault()
-    dispatch(addToCartAsync({...product, quantity:1, user: user.id}))
+        if(items.findIndex(item => item.productId === product[0].id)<  0){
+            const newItem = {...product, productId: product[0].id, quantity:1, user: user.id}
+            delete newItem['id']
+            dispatch(addToCartAsync(newItem))
+
+        // TODO: check if item added to server or not 
+        toast.success('Item added to Bag', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: 0,
+            theme: "light",
+            // transition: Bounce,
+            });
+        
+
+        } else{
+            toast.info('Item Already added to Bag', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: 0,
+                theme: "light",
+                // transition: Bounce,
+                });
+        }
     }
     
 
@@ -280,6 +313,7 @@ export default function AdminProductDetail() {
                 </div>
             </div>
         </div> }
+        <ToastContainer/>
         </>
     )
 }

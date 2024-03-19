@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom"
 import { checkUserAsync, selectLoggedInUser } from '../authSlice';
+import Logo from "../../../assets/logo2.png"
+
 
 
 
@@ -15,11 +17,14 @@ export default function Login() {
     {user && <Navigate to='/' replace = {true}></Navigate>}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
+        <div className="flex flex-shrink-0 justify-center items-center">
+                  <img
+                     className="w-auto h-28"
+                    src={Logo}
+                    alt="Your Company"
+                  />
+                  {/* <p className='text-lg text-[#9CCAF2] font-sans font-medium text-white ml-1'>Shop Hive</p> */}
+                </div>
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Log in to your account
           </h2>
@@ -99,6 +104,7 @@ export default function Login() {
         </div>
 
       </div>
+
     </>
   )
 }

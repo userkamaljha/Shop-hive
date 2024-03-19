@@ -130,6 +130,8 @@ export const productSlice = createSlice({
         state.status = 'idle';
         const index = state.products.findIndex(product => product.id === action.payload.id)
         state.products[index] = (action.payload)
+        state.selectedProduct = action.payload
+
       })
 
       
@@ -140,6 +142,7 @@ export const productSlice = createSlice({
 export const { clearSelectedProduct } = productSlice.actions;
 export const selectAllProducts = (state) => state.product.products;
 export const selectAllBrands = (state) => state.product.brands;
+export const selectStatus = (state) => state.product.status;
 export const selectAllCategories = (state) => state.product.categories;
 export const selectProductById = (state) => state.product.selectedProduct;
 

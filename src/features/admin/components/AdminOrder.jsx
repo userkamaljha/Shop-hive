@@ -5,7 +5,7 @@ import { EyeIcon } from "@heroicons/react/24/outline"
 import { PencilIcon } from "@heroicons/react/24/outline"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import Pagination from "../../common feature/Pagination"
+import Pagination from "../../common/Pagination"
 import { selectAllProducts } from "../../product/productSlice"
 
 
@@ -16,7 +16,6 @@ function AdminOrder() {
   const totalOrders = useSelector(selectTotalOrders)
   const orders = useSelector(selectAllOrder)
   const totalItems = 1
-  console.log(orders);
   const [editableOrderId , setEditableOrderId] = useState(-1)
 
 
@@ -56,7 +55,6 @@ function AdminOrder() {
       _page: page,
       _per_page: ITEMS_PER_PAGE
     }
-    console.log(totalItems.pages);
 
     dispatch(fetchAllOrdersAsync(pagination))
   }, [dispatch, page, editableOrderId])
