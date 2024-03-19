@@ -24,7 +24,7 @@ export default function ProductForm() {
     if (params.id) {
       dispatch(fetchProductByIdAsync(params.id))
     } else {
-      dispatch(clearSelectedProduct())
+      // dispatch(clearSelectedProduct())
     }
   }, [params.id], dispatch)
 

@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectLoggedInUser } from '../../auth/authSlice';
-import { fetchLoggedInUserOrdersAsync, selectUserOrders } from '../userSlice';
+import { fetchLoggedInUserOrdersAsync, selectUserInfo, selectUserOrders } from '../userSlice';
 import { Link } from 'react-router-dom';
 import { discountPrice } from '../../../app/constants';
+import Navbar from '../../navbar/Navbar';
 
 export default function UserOrders() {
     const dispatch = useDispatch();
-    const user = useSelector(selectLoggedInUser)
+    const user = useSelector(selectUserInfo)
     const orders = useSelector(selectUserOrders)
     useEffect(() => {
         dispatch(fetchLoggedInUserOrdersAsync(user.id))
     }, [user.id, dispatch])
 
-    {return orders.length !== 0 ?(
+    {return orders && orders.length !== 0 ?(
         <>
+         <Navbar/>
+       <h1 className="text-2xl mx-28 my-8 font-semibold">My Orders</h1>
             {orders.map((order) => (
                <div className="bg-gray-100 my-8 rounded-sm mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                     <h1 className="text-4xl py-8 font-bold tracking-tight text-gray-900"> Order id :  #{order.id}</h1>
@@ -80,7 +83,7 @@ export default function UserOrders() {
                     </div>
                     <div className='py-5'>
                     <h3>shipping address: </h3>
-                    {/* <div
+                    <div
                         className="flex my-4 justify-between gap-x-6 px-5 py-5 border-solid border-2 border-gray-200"
                     >
                         <div className="flex gap-x-4">
@@ -104,7 +107,7 @@ export default function UserOrders() {
                                 {order.selectedAddress.state}
                             </p>
                         </div>
-                    </div> */}
+                    </div>
                     </div>
                     
                 </div>

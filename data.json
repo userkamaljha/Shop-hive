@@ -700,6 +700,15 @@
           "city": "panipat",
           "state": "haryana",
           "pincode": "132103"
+        },
+        {
+          "name": "ankit ",
+          "email": "ankitsharma@gmail.com",
+          "contactNo": "1232464787",
+          "street": "xyz Model Town",
+          "city": "panipat",
+          "state": "haryana",
+          "pincode": "13103"
         }
       ]
     },
@@ -708,6 +717,15 @@
       "email": "admin@gmail.com",
       "password": "Kamal123",
       "addresses": [
+        {
+          "name": "ankit sharma",
+          "email": "ankitsharma@gmail.com",
+          "contactNo": "9729989246",
+          "street": "Model Town",
+          "city": "panipat",
+          "state": "haryana",
+          "pincode": "132103"
+        },
         {
           "name": "kamal jha",
           "email": "userkamaljha@gmail.com",
@@ -768,25 +786,25 @@
     },
     {
       "0": {
-        "id": "9",
-        "title": "Infinix INBOOK",
-        "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-        "price": 1099,
-        "discountPercentage": 11.83,
-        "rating": 4.54,
-        "stock": 96,
-        "brand": "Infinix",
-        "category": "laptops",
-        "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+        "id": "1",
+        "title": "iPhone 9",
+        "description": "An apple mobile which is nothing like apple",
+        "price": 556,
+        "discountPercentage": 12.96,
+        "rating": 4,
+        "stock": 94,
+        "brand": "Apple",
+        "category": "smartphones",
+        "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
         "images": [
-          "https://cdn.dummyjson.com/product-images/9/1.jpg",
-          "https://cdn.dummyjson.com/product-images/9/2.png",
-          "https://cdn.dummyjson.com/product-images/9/3.png",
-          "https://cdn.dummyjson.com/product-images/9/4.jpg",
-          "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          "https://cdn.dummyjson.com/product-images/1/1.jpg",
+          "https://cdn.dummyjson.com/product-images/1/2.jpg",
+          "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+          "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
         ]
       },
-      "id": "48ee",
+      "id": "87d5",
+      "productId": "1",
       "quantity": 1,
       "user": "835c"
     }
@@ -1055,7 +1073,7 @@
         "state": "haryana",
         "pincode": "132103"
       },
-      "status": "cancelled"
+      "status": "pending"
     },
     {
       "id": "c84e",
@@ -1620,6 +1638,247 @@
         "contactNo": "9729989246",
         "street": "xyz Model Town",
         "city": "panipat",
+        "state": "haryana",
+        "pincode": "132103"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "a287",
+      "items": [
+        {
+          "0": {
+            "id": "2",
+            "title": "iPhone X",
+            "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+            "price": 897,
+            "discountPercentage": 17.94,
+            "rating": 4,
+            "stock": 34,
+            "brand": "Apple",
+            "category": "smartphones",
+            "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+            "images": [
+              "https://cdn.dummyjson.com/product-images/2/1.jpg",
+              "https://cdn.dummyjson.com/product-images/2/2.jpg",
+              "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+              "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+            ]
+          },
+          "id": "71cd",
+          "productId": "2",
+          "quantity": 1,
+          "user": "7e4a"
+        }
+      ],
+      "totalAmount": 736,
+      "totalItems": 1,
+      "user": {
+        "id": "7e4a",
+        "email": "userkamaljha@gmail.com",
+        "password": "Kamal123",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "kamal jha",
+            "email": "userkamaljha@gmail.com",
+            "contactNo": "13253647",
+            "street": "xyz  2 streeet",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          },
+          {
+            "name": "nikhil",
+            "email": "nikhil@gmail.com",
+            "contactNo": "9729989246",
+            "street": "xyz Model Town",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          },
+          {
+            "name": "ankit ",
+            "email": "ankitsharma@gmail.com",
+            "contactNo": "9729989246",
+            "street": "xyz Model Town",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          },
+          {
+            "name": "ankit ",
+            "email": "ankitsharma@gmail.com",
+            "contactNo": "1232464787",
+            "street": "xyz Model Town",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          }
+        ]
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "nikhil",
+        "email": "nikhil@gmail.com",
+        "contactNo": "9729989246",
+        "street": "xyz Model Town",
+        "city": "panipat",
+        "state": "haryana",
+        "pincode": "132103"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "bdce",
+      "items": [
+        {
+          "0": {
+            "id": "8",
+            "title": "Microsoft Surface Laptop 4",
+            "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+            "price": 1499,
+            "discountPercentage": 10.23,
+            "rating": 4.43,
+            "stock": 68,
+            "brand": "Microsoft Surface",
+            "category": "laptops",
+            "thumbnail": "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg",
+            "images": [
+              "https://cdn.dummyjson.com/product-images/8/1.jpg",
+              "https://cdn.dummyjson.com/product-images/8/2.jpg",
+              "https://cdn.dummyjson.com/product-images/8/3.jpg",
+              "https://cdn.dummyjson.com/product-images/8/4.jpg",
+              "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg"
+            ]
+          },
+          "id": "f290",
+          "productId": "8",
+          "quantity": 1,
+          "user": "7e4a"
+        }
+      ],
+      "totalAmount": 1346,
+      "totalItems": 1,
+      "user": {
+        "id": "7e4a",
+        "email": "userkamaljha@gmail.com",
+        "password": "Kamal123",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "kamal jha",
+            "email": "userkamaljha@gmail.com",
+            "contactNo": "13253647",
+            "street": "xyz  2 streeet",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          },
+          {
+            "name": "nikhil",
+            "email": "nikhil@gmail.com",
+            "contactNo": "9729989246",
+            "street": "xyz Model Town",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          },
+          {
+            "name": "ankit ",
+            "email": "ankitsharma@gmail.com",
+            "contactNo": "1232464787",
+            "street": "xyz Model Town",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "13103"
+          }
+        ]
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "ankit ",
+        "email": "ankitsharma@gmail.com",
+        "contactNo": "1232464787",
+        "street": "xyz Model Town",
+        "city": "panipat",
+        "state": "haryana",
+        "pincode": "13103"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "bdb2",
+      "items": [
+        {
+          "0": {
+            "id": "6",
+            "title": "MacBook Pro",
+            "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+            "price": 1750,
+            "discountPercentage": 11.02,
+            "rating": 4,
+            "stock": 83,
+            "brand": "Apple",
+            "category": "laptops",
+            "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
+            "images": [
+              "https://cdn.dummyjson.com/product-images/6/1.png",
+              "https://cdn.dummyjson.com/product-images/6/2.jpg",
+              "https://cdn.dummyjson.com/product-images/6/4.jpg",
+              "https://cdn.dummyjson.com/product-images/6/thumbnail.png"
+            ]
+          },
+          "id": "6b2e",
+          "productId": "6",
+          "quantity": 1,
+          "user": "835c"
+        }
+      ],
+      "totalAmount": 1557,
+      "totalItems": 1,
+      "user": {
+        "id": "835c",
+        "email": "admin@gmail.com",
+        "password": "Kamal123",
+        "addresses": [
+          {
+            "name": "kamal jha",
+            "email": "userkamaljha@gmail.com",
+            "contactNo": "1232464787",
+            "street": "xyz Model Town",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          },
+          {
+            "name": "ankit ",
+            "email": "ankitsharma@gmail.com",
+            "contactNo": "1232464787",
+            "street": "xyz Model Town",
+            "city": "panipat",
+            "state": "haryana",
+            "pincode": "132103"
+          },
+          {
+            "name": "nikhil",
+            "email": "ankitsharma@gmail.com",
+            "contactNo": "1232464787",
+            "street": "xyz Model Town",
+            "city": "rohtak",
+            "state": "haryana",
+            "pincode": "132103"
+          }
+        ],
+        "role": "admin"
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "nikhil",
+        "email": "ankitsharma@gmail.com",
+        "contactNo": "1232464787",
+        "street": "xyz Model Town",
+        "city": "rohtak",
         "state": "haryana",
         "pincode": "132103"
       },

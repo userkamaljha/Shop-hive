@@ -2,7 +2,8 @@ import { Link, Navigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { updateItemAsync, deleteItemFromCardAsync, selectItems } from "../features/cart/cartSlice"
 import { useForm } from "react-hook-form"
-import { createUserAsync, selectLoggedInUser, updateUserAsync } from "../features/auth/authSlice"
+import { createUserAsync, selectLoggedInUser } from "../features/auth/authSlice"
+import { selectUserInfo, updateUserAsync } from "../features/user/userSlice"
 import {createOrderAsync, selectCurrentOrder} from "../features/order/orderSlice"
 import { useState } from "react"
 import { discountPrice } from "../app/constants"
@@ -23,7 +24,7 @@ function CheckoutPage() {
     const handleRemove = (e, id) => {
         dispatch(deleteItemFromCardAsync(id))
     }
-    const user = useSelector(selectLoggedInUser)
+    const user = useSelector(selectUserInfo)
     const handleAddress = (e) => {
         setSelectedAddress(user.addresses[e.target.value])
     }

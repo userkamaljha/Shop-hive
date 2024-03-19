@@ -7,6 +7,7 @@ import { fetchItemByUserIdAsync } from './features/cart/cartSlice'
 import { selectLoggedInUser } from './features/auth/authSlice'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { fetchLoggedInUserAsync } from './features/user/userSlice'
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 useEffect(()=>{
   if(user){
     dispatch(fetchItemByUserIdAsync(user.id))
+    dispatch(fetchLoggedInUserAsync(user.id))
   }
 }, [user.id])
 
